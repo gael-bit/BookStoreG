@@ -2,11 +2,11 @@
 
 <section>
    <ul>
-        <li v-for:="(item,index) in panier" >
+        <li v-for:="(item,index) in panier" :key="item.title">
         <img :src="item.img">
             {{ item.title }}
             {{item.price}}€
-            <button @click="store.supprimerDuPanier(item, index)">supprimer</button>
+            <button @click="store.supprimerDuPanier( index)">supprimer</button>
         </li>
     </ul>
     

@@ -7,11 +7,18 @@ export const store = reactive({
 
     ajouterPanier(book){
         this.order.push(book);
-        this.price += book.price;
+        //this.price += book.price;
     },
 
-    supprimerDuPanier(book,index){
+    supprimerDuPanier(index){
         this.order.splice(index, 1);
-        this.price -= book.price;
+        //this.price -= book.price;
+    },
+
+    calculPrix(){
+        this.price = this.order.reduce((previousValue,currentValue) => previousValue + currentValue.price, 0);
     }
+
+
+
 })

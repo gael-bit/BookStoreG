@@ -1,6 +1,7 @@
 <template>
     
     <div>
+        {{store.calculPrix()}}
         <p>Prix : {{ store.price}} €</p>
     </div>
 
@@ -9,7 +10,6 @@
 <script lang="ts" setup>
 
 import{store} from '../store.js'
-
 
 //console.log(order);
 

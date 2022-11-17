@@ -1,6 +1,6 @@
 <template>
   <ul>
-  <li v-for:="item in books" >
+  <li v-for:="item in books"  :key="item.title">
   <img :src="item.img">
     {{ item.title }}
     {{item.price}}€
@@ -30,16 +30,6 @@ onMounted(() => {
       .then(response => books.value = response.data.books);
   
 });
-
-
-function ajouterPanier(book){
-    order.title = book.title;
-    order.price = book.price;
-    order.img = book.img;
-    console.log(store.order);
-
-
-}
 
 
 </script>
