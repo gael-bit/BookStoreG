@@ -16,7 +16,7 @@ export const store = reactive({
     },
 
     calculPrix(){
-        this.price = this.order.reduce((previousValue,currentValue) => previousValue + currentValue.price, 0);
+        this.price = this.order.reduce((previousValue,currentValue) => previousValue + (currentValue.price * currentValue.quantity), 0);
     }
 
 

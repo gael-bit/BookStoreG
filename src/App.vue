@@ -20,7 +20,7 @@
             :to="item.path"
           >
             <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-title>{{ item.title }}<p v-if="item.title == 'panier' ">{{store.order.length}}</p></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -33,11 +33,11 @@
   <script lang="ts" setup>
   import { RouterLink, RouterView } from 'vue-router'
   import { ref, onMounted, reactive } from 'vue'
+  import{store} from './store.js'
   import axios from 'axios';
 
   const menuItems= ref([
             { title: 'books', path: '/' },
-            { title: 'cart', path: '/cart' },
             {title: 'panier', path: '/panier'}
   
        ])

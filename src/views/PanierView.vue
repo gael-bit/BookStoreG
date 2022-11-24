@@ -6,6 +6,7 @@
         <img :src="item.img">
             {{ item.title }}
             {{item.price}}€
+            <p>Quantité : {{item.quantity}}</p>
             <button @click="store.supprimerDuPanier( index)">supprimer</button>
         </li>
     </ul>
