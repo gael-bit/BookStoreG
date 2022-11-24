@@ -30,7 +30,7 @@
         </div>
         <v-btn
         class=""
-        color="success"
+        color="error"
         @click="store.supprimerDuPanier( index)"
       >
       Supprimer
