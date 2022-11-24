@@ -3,11 +3,51 @@
 <section>
    <ul>
         <li v-for:="(item,index) in panier" :key="item.title">
+            <v-card
+                class="ml-4 mt-12 mb-6 mr-10 pb-4"
+                max-width="460"
+                elevation="3"
+            >
+    <div class="d-flex">
+      <v-img
+        height="255"
+        :src="item.img"
+      ></v-img>
+      <div>   
+        <v-card-title style="font-size: 1.6em;">{{ item.title }}</v-card-title>
+    
+        <v-card-text>
+    
+            <div class="my-4 text-subtitle-1" style="font-weight: bold; font-size: 1.5em!important;">
+            <span> Prix : {{item.price}}€</span>
+            </div>
+        </v-card-text>
+
+        <v-card-text>
+    
+        <div class="my-4 text-subtitle-1" style="font-weight: bold; font-size: 1.5em!important;">
+        <span>Quantité :  {{item.quantity}}</span>
+        </div>
+        <v-btn
+        class=""
+        color="success"
+        @click="store.supprimerDuPanier( index)"
+      >
+      Supprimer
+      </v-btn>
+    </v-card-text>
+        </div>
+    </div>
+
+      
+
+
+    </v-card><!--
         <img :src="item.img">
             {{ item.title }}
             {{item.price}}€
             <p>Quantité : {{item.quantity}}</p>
-            <button @click="store.supprimerDuPanier( index)">supprimer</button>
+            <button @click="store.supprimerDuPanier( index)">supprimer</button>-->
         </li>
     </ul>
     

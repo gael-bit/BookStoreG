@@ -1,59 +1,50 @@
- /*import { describe, it, expect } from 'vitest'
-
-import { mount } from '@vue/test-utils'
-import HelloWorld from '../HelloWorld.vue'
-
-describe('HelloWorld', () => {
-  it('renders properly', () => {
-    const wrapper = mount(HelloWorld, { props: { msg: 'Hello Vitest' } })
-    expect(wrapper.text()).toContain('Hello Vitest')
-  })
-})
-*/
 import { describe, it, expect, test } from 'vitest'
-
 import { store } from '../../store.js'
 
 
 describe('test store', () => {
-  test('should add a element', () => {
-    let book =   { "id": 1, "title": "harry potter", "price": 10, "img":"https://m.media-amazon.com/images/I/916DM68L6cS.jpg", "quantity": 1};
-    let book1 = { "id": 2, "title": "blanche neige", "price": 20, "img":"https://static.fnac-static.com/multimedia/images_produits/ZoomPE/9/2/9/9782230007929/tsp20130902232503/Blanche-Neige-et-les-sept-nains.jpg", "quantity": 1 };
-    let book2 = { "id": 3, "title": "alice", "price": 30, "img": "https://cdn.franceloisirs.com/13479-3368278-thickbox/alice-au-pays-des-merveilles.jpg", "quantity": 1};
-    let book3 = { "id": 4, "title": "cendrillon", "price": 20, "img": "https://static.fnac-static.com/multimedia/images_produits/ZoomPE/9/9/8/9782230007899/tsp20090122221956/Cendrillon.jpg", "quantity": 1  };
-    let book4 = { "id": 5, "title": "luke cage", "price": 10,"img": "https://www.syfy.com/sites/syfy/files/lukecagecityfire2021001_cvr.jpg", "quantity": 1};
-    let book5 = { "id": 6, "title": "Jessica Jones", "price": 15,"img": "https://i.annihil.us/u/prod/marvel/i/mg/1/60/5e149e4447993/clean.jpg", "quantity": 1};
-    let book6 = { "id": 7, "title": "Le seigneur des anneaux", "price": 25,"img": "https://m.media-amazon.com/images/I/71wmwLm32nL.jpg", "quantity": 1};
+  test('should add a element and check if is equal', () => {
+    store.order=[];
+    let book =   { "id": 1, "title": "harry potter", "price": 10, "img":"https://m.media-amazon.com/images/I/916DM68L6cS.jpg","quantity": 1};
+    let book1 = { "id": 2, "title": "blanche neige", "price": 20, "img":"https://static.fnac-static.com/multimedia/images_produits/ZoomPE/9/2/9/9782230007929/tsp20130902232503/Blanche-Neige-et-les-sept-nains.jpg","quantity": 1 };
+    let result  = [book, book1];
     store.ajouterPanier(book);
     store.ajouterPanier(book1);
-    store.ajouterPanier(book2);
-    store.ajouterPanier(book3);
-    store.ajouterPanier(book4);
-    store.ajouterPanier(book5);
-    store.ajouterPanier(book6);
-    expect(store.order.length).toEqual(7);
+
+    expect(store.order).toEqual(result);
   })
 })
 
 describe('test price', () => {
   test("should increment price", () => {
+    store.order=[];
+    store.price = 0;
+    let book =   { "id": 1, "title": "harry potter", "price": 10, "img":"https://m.media-amazon.com/images/I/916DM68L6cS.jpg","quantity": 1};
+    let book1 = { "id": 2, "title": "blanche neige", "price": 20, "img":"https://static.fnac-static.com/multimedia/images_produits/ZoomPE/9/2/9/9782230007929/tsp20130902232503/Blanche-Neige-et-les-sept-nains.jpg","quantity": 1 };
+    store.ajouterPanier(book);
+    store.ajouterPanier(book1);
     store.calculPrix();
-    expect(store.price).toBe(130);
+    expect(store.price).toBe(30);
 
   })
 })
 
 describe('test remove function', () => {
-  test("should remove book and set the price to zero", () => {
-    const length = store.order.length;
+  test("should remove a book", () => {
+    store.order=[];
+    store.price = 0;
+    let book =   { "id": 1, "title": "harry potter", "price": 10, "img":"https://m.media-amazon.com/images/I/916DM68L6cS.jpg","quantity": 1};
+    let book1 = { "id": 2, "title": "blanche neige", "price": 20, "img":"https://static.fnac-static.com/multimedia/images_produits/ZoomPE/9/2/9/9782230007929/tsp20130902232503/Blanche-Neige-et-les-sept-nains.jpg","quantity": 1 };
+    let book2 = { "id": 3, "title": "alice", "price": 30, "img": "https://cdn.franceloisirs.com/13479-3368278-thickbox/alice-au-pays-des-merveilles.jpg","quantity": 1};
+    store.ajouterPanier(book);
+    store.ajouterPanier(book1);
+    store.ajouterPanier(book2);
+    let result = [book, book2]
+    store.supprimerDuPanier(1)
 
-    for(let i = 0; i < length; i++){
-        store.supprimerDuPanier(0)
-    }
-      
+    expect(store.order.length).toEqual(2);
     store.calculPrix();
-    expect(store.order.length).toEqual(0);
-    expect(store.price).toBe(0);
-
+    expect(store.price).toBe(40);
+    expect(store.order).toEqual(result);
   })
 })

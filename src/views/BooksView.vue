@@ -1,7 +1,93 @@
 <template>
-  <ul>
+  <ul class="d-flex flex-wrap" style="list-style-type: none;">
   <li v-for:="item in books"  :key="item.titl">
-  <img :src="item.img">
+    <v-card
+      class="ml-4 mt-12 mb-6 mr-10 pb-10"
+      max-width="360"
+      elevation="3"
+    >
+    
+      <v-img
+        height="215"
+        :src="item.img"
+      ></v-img>
+  
+      <v-card-title style="font-size: 1.6em;">{{ item.title }}</v-card-title>
+  
+      <v-card-text>
+        <v-row
+          align="center"
+          class="mx-0"
+        >
+          <v-rating
+            :value="4.5"
+            color="amber"
+            dense
+            half-increments
+            readonly
+            size="14"
+          ></v-rating>
+  
+          <div class="grey--text ms-4">
+            4.5 (413)
+          </div>
+        </v-row>
+  
+        <div class="my-4 text-subtitle-1" style="font-weight: bold; font-size: 1.5em!important;">
+          {{item.price}}€
+        </div>
+  
+        <div>{{item.story}}</div>
+      </v-card-text>
+
+      <v-btn
+        class=""
+        color="success"
+        @click="store.ajouterPanier(item)"
+        style="left:29%;"
+      >
+      Acheter
+      </v-btn>
+
+      <div class="quantityButton">
+        <v-btn 
+        v-if="item.quantity > 1"
+        class="ma-2"
+        color="info"
+        @click="item.quantity--"
+      >
+      -
+      </v-btn>
+      <v-btn 
+        v-else
+        class="ma-2"
+        color="info"
+      >
+      -
+      </v-btn>
+      <v-btn
+        class="ma-2"
+        color="info"
+      >
+      Quantité : {{item.quantity}}
+      </v-btn>
+
+        <v-btn
+        class="ma-2"
+        color="info"
+        @click="item.quantity++"
+      >
+      +
+      </v-btn>
+
+    </div>
+
+    </v-card>
+  </li>
+
+
+</ul><!--
+<img :src="item.img">
     {{ item.title }}
     {{item.price}}€
     <button @click="store.ajouterPanier(item)" class="acheter">Acheter</button>
@@ -10,10 +96,10 @@
       <button v-else class="quantite" style="font-size:1em; font-weight: bold;">-</button>
       <p class="quantite">Quantité : {{item.quantity}}</p>
       <button class="quantite" style="font-size:1em;" @click="item.quantity++">+</button>
-    </div>
-  </li>
-</ul>
+    </div>-->
 </template>
+
+
 
 <script lang="ts" setup>////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -69,7 +155,7 @@ p{
 }
 
 .quantite{
-  background-color: rgb(228, 42, 42);
+  background-color: #2196f3;
   color:white;
 }
 </style>
