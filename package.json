@@ -11,7 +11,8 @@
     "dev": "vite",
     "preview": "vite preview",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' :4173 'cypress open --e2e'",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",

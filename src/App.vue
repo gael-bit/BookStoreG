@@ -19,7 +19,7 @@
             :key="item.title"
             :to="item.path"
           >
-            <v-list-item-content>
+            <v-list-item-content >
               <v-list-item-title>{{ item.title }}<p v-if="item.title == 'panier' ">{{store.order.length}}</p></v-list-item-title>
             </v-list-item-content>
           </v-list-item>

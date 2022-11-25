@@ -4,29 +4,30 @@
    <ul>
         <li v-for:="(item,index) in panier" :key="item.title">
             <v-card
-                class="ml-4 mt-12 mb-6 mr-10 pb-4"
+                class="ml-4 mt-12 mb-6 mr-10 "
                 max-width="460"
-                elevation="3"
+                elevation="4"
             >
     <div class="d-flex">
       <v-img
-        height="255"
+        height="280"
+        max-width="186"
         :src="item.img"
       ></v-img>
       <div>   
-        <v-card-title style="font-size: 1.6em;">{{ item.title }}</v-card-title>
+        <v-card-title class="title" style="font-size: 1.6em;">{{ item.title }}</v-card-title>
     
         <v-card-text>
     
-            <div class="my-4 text-subtitle-1" style="font-weight: bold; font-size: 1.5em!important;">
+            <div class="text-subtitle-1" style="font-weight: bold; font-size: 1.5em!important;">
             <span> Prix : {{item.price}}€</span>
             </div>
         </v-card-text>
 
         <v-card-text>
     
-        <div class="my-4 text-subtitle-1" style="font-weight: bold; font-size: 1.5em!important;">
-        <span>Quantité :  {{item.quantity}}</span>
+        <div class=" text-subtitle-1" style="font-weight: bold; font-size: 1.5em!important;">
+        <span class="quantity">Quantité :  {{item.quantity}}</span>
         </div>
         <v-btn
         class=""
@@ -76,18 +77,14 @@ const panier = store.order;
 
 .price{
     position: fixed;
-    margin-left: 30%;
+    margin-left: 45%;
 }
 
 section{
     display : flex;
 }
 ul{
-    width: 30%;
-}
-img{
-  width: 100px;
-  height: 150px;
+    width: 50%;
 }
 
 button{
